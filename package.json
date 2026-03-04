@@ -1,0 +1,23 @@
+{
+  "name": "ts-advanced-types",
+  "version": "1.0.0",
+  "description": "this the second part of 'ts-learning' journey",
+  "homepage": "https://github.com/alan3mili0xs31-del/ts-advanced-types#readme",
+  "bugs": {
+    "url": "https://github.com/alan3mili0xs31-del/ts-advanced-types/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alan3mili0xs31-del/ts-advanced-types.git"
+  },
+  "license": "MIT",
+  "author": "Alan Olaya Toscano <alan3mili0xs31@gmail.com>",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
