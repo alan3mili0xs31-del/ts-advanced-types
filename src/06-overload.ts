@@ -10,6 +10,7 @@
   function sum(x: number, y: number): number;
   function sum(x: string, y: string): string;
 
+  // The implementation must be implemented at the end of the overload signatures.
   function sum(x: Operant, y: Operant) : Operant{
     if (typeof x === 'number' && typeof y === 'number')
       return x + y;
