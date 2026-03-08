@@ -1,4 +1,5 @@
-export type Category = {
-  id?: number | string;
+import { type Base } from './../base.js';
+
+export interface Category extends Base {
   name: string;
 };

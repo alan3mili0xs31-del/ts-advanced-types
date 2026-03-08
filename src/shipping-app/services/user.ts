@@ -7,7 +7,8 @@ export const createUser = (
 ): number | string => {
   const newUser: User = {
     username,
-    role
+    role,
+    createdAt: new Date().toString()
   };
   return userRepo.saveUser(newUser);
 };
