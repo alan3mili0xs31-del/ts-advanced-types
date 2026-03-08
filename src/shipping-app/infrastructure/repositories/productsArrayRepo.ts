@@ -1,19 +1,17 @@
 import { type Product } from './../../models/inventary/product.js';
 
 let products: Product[] = [];
-let currentId: number = 0;
 
-export const saveProduct = (product: Product): number | string => {
-  product.id = ++currentId;
+export const saveProduct = (product: Product): string => {
   products.push(product);
   return product.id;
 };
 
-export const findProduct = (id: number | string): Product | undefined => {
+export const findProduct = (id: string): Product | undefined => {
   return products.find(product => product.id === id);
 };
 
-export const removeProduct = (id: number | string) => {
+export const removeProduct = (id: string) => {
   products = products.filter(product => product.id !== id);
 };
 

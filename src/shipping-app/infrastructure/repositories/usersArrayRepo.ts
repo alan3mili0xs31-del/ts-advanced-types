@@ -1,19 +1,17 @@
 import { type User } from './../../models/users/user.js';
 
 let users: User[] = [];
-let currentId: number = 0;
 
-export const saveUser = (user: User): number | string => {
-  user.id = ++currentId;
+export const saveUser = (user: User): string => {
   users.push(user);
   return user.id;
 };
 
-export const findUser = (id: number | string): User | undefined => {
+export const findUser = (id: string): User | undefined => {
   return users.find(user => user.id === id);
 };
 
-export const removeUser = (id: number | string) => {
+export const removeUser = (id: string) => {
   users = users.filter(user => user.id !== id);
 };
 
