@@ -4,4 +4,5 @@ export interface CreateUserDTO
   extends Pick<User, 'username'> {
     role?: Role
   };
-export type UpdateUserDTO = Omit<User, 'createdAt'>;
+
+export type UpdateUserDTO = Partial<CreateUserDTO>;

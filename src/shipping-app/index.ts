@@ -2,9 +2,10 @@ import * as userService from './services/user.js';
 import * as productService from './services/product.js';
 import * as categoryService from './services/category.js';
 import * as shippingService from './services/shipping.js';
+import {Role} from './models/users/user.js';
 import {type CreateUserDTO} from './dtos/user.dtos.js';
 import {type CreateCategoryDTO} from './dtos/category.dtos.js';
-import {type CreateProductDTO} from './dtos/product.dtos.js';
+import type {CreateProductDTO, UpdateProductDTO} from './dtos/product.dtos.js';
 import {type CreateOrderDTO} from './dtos/order.dtos.js';
 import { faker } from '@faker-js/faker';
 
@@ -25,6 +26,10 @@ const user1Id = userService.createUser({username: 'Alan Kamisato'});
 
 const category1Id = categoryService.createCategory({name: 'Bebidas'});
 const category2Id = categoryService.createCategory({name: 'Dulces'});
+
+const catUp = categoryService.updateCategory(category1Id, {
+  name: 'Golosinas'
+});
 // console.log("New category's id:", category1Id);
 
 const product1Id = productService.createProduct(
@@ -36,6 +41,22 @@ const product2Id = productService.createProduct(
   productGenerator(category2Id)
 );
 // console.log("New product's id:", product2Id);
+
+productService.updateProduct(product1Id,
+  {
+    title: 'Titulo normal',
+    description: 'Normal desc',
+    tags: ['Akai', 'Natsu'],
+    categoryId: category1Id
+  }
+);
+
+userService.updateUser(user1Id, {
+  role: Role.ADMIN,
+  username: 'Ayaka Kamizato'
+});
+
+
 
 const order1Id = shippingService.createOrder(
   {

@@ -11,6 +11,11 @@ export const findOrder = (id: string): Order | undefined => {
   return orders.find(order => order.id === id);
 };
 
+export const updateOrder = (changes: Order): void => {
+  const orderIndex = orders.findIndex(order => order.id === changes.id);
+  orders[orderIndex] = changes;
+};
+
 export const removeOrder = (id: string) => {
   orders = orders.filter(order => order.id !== id);
 };

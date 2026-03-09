@@ -11,6 +11,13 @@ export const findCategory = (id: string): Category | undefined => {
   return categories.find(category => category.id === id);
 };
 
+export const updateCategory = (changes: Category): void => {
+  const categoryIndex = categories.findIndex(cat => cat.id === changes.id);
+  console.log(categories[categoryIndex]);
+  categories[categoryIndex] = changes;
+  console.log(categories[categoryIndex]);
+};
+
 export const removeCategory = (id: string) => {
   categories = categories.filter(category => category.id !== id);
 };

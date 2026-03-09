@@ -20,6 +20,10 @@ export const createOrder = (data: CreateOrderDTO): string => {
   return ordersRepo.saveOrder(newOrder);
 };
 
+export const cancelOrder = (id: string) => {
+  ordersRepo.removeOrder(id);
+};
+
 export const getOrdersByUserId = (id: string): Order[] => {
   return ordersRepo.getAllOrders()
     .filter(order => order.user.id === id);

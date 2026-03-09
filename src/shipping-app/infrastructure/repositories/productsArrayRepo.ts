@@ -11,6 +11,11 @@ export const findProduct = (id: string): Product | undefined => {
   return products.find(product => product.id === id);
 };
 
+export const updateProduct = (changes: Product): void => {
+  const productIndex = products.findIndex(product => product.id === changes.id);
+  products[productIndex] = changes;
+};
+
 export const removeProduct = (id: string) => {
   products = products.filter(product => product.id !== id);
 };

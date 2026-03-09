@@ -11,6 +11,11 @@ export const findUser = (id: string): User | undefined => {
   return users.find(user => user.id === id);
 };
 
+export const updateUser = (changes: User): void => {
+  const userIndex = users.findIndex(user => user.id === changes.id);
+  users[userIndex] = changes;
+};
+
 export const removeUser = (id: string) => {
   users = users.filter(user => user.id !== id);
 };
