@@ -1,6 +1,6 @@
 import { type Category} from './../models/inventary/category.js';
 import * as categoriesRepo from './../infrastructure/repositories/categoriesArrayRepo.js';
-import type {CreateCategoryDTO, UpdateCategoryDTO} from './../dtos/category.dtos.js';
+import type {CreateCategoryDTO, UpdateCategoryDTO, FilterCategoryDTO} from './../dtos/category.dtos.js';
 import { faker } from '@faker-js/faker';
 
 export const createCategory = (data: CreateCategoryDTO): string => {
@@ -25,3 +25,15 @@ export const updateCategory = (id: string, changes: UpdateCategoryDTO): Category
 export const getAllCategories = () => {
   return categoriesRepo.getAllCategories();
 };
+
+export const findCategory = (filter: FilterCategoryDTO): ReadonlyArray<Category> => {
+  let categoriesFiltered: ReadonlyArray<Category> =
+    Object.keys(filter).length > 0 ? categoriesRepo.getAllCategories() : [];
+  const {name} = filter;
+  if (filter.name)
+    categoriesFiltered = categoriesFiltered.filter(
+      cat => cat.name.toLowerCase().includes(<string>name?.toLowerCase()));
+  return categoriesFiltered;
+}
+
+

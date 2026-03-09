@@ -1,6 +1,6 @@
 import { type User, Role } from './../models/users/user.js';
 import * as userRepo from './../infrastructure/repositories/usersArrayRepo.js';
-import type { CreateUserDTO, UpdateUserDTO } from './../dtos/user.dtos.js';
+import type { CreateUserDTO, UpdateUserDTO, FilterUserDTO } from './../dtos/user.dtos.js';
 import { faker } from '@faker-js/faker';
 
 export const createUser = (data: CreateUserDTO): string => {
@@ -21,4 +21,15 @@ export const updateUser = (id: string, changes: UpdateUserDTO): User => {
   };
   userRepo.updateUser(updatedUser);
   return updatedUser;
+};
+
+export const findUsers = (filter: FilterUserDTO): ReadonlyArray<User> => {
+  let usersFiltered: ReadonlyArray<User> =
+    Object.keys(filter).length > 0 ? userRepo.getAllUsers() : [];
+  const {username, role} = filter;
+  if (username)
+    usersFiltered = usersFiltered.filter(u => u.username.toLowerCase().includes(username.toLowerCase()));
+  if (role)
+    usersFiltered = usersFiltered.filter(u => u.role === role);
+  return usersFiltered;
 };

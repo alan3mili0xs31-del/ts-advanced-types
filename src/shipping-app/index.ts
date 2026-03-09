@@ -22,6 +22,8 @@ const productGenerator = (categoriaId: string): CreateProductDTO => {
 };
 
 const user1Id = userService.createUser({username: 'Alan Kamisato'});
+const user2Id = userService.createUser({username: 'Steban Humbaldo'});
+const user3Id = userService.createUser({username: 'Alan Humbaldo', role: Role.ADMIN});
 // console.log("New user's id:", user1Id);
 
 const category1Id = categoryService.createCategory({name: 'Bebidas'});
@@ -51,12 +53,14 @@ productService.updateProduct(product1Id,
   }
 );
 
+productService.updateProduct(product2Id, {
+  tags: ['Akai', 'Vanilla']
+});
+
 userService.updateUser(user1Id, {
   role: Role.ADMIN,
   username: 'Ayaka Kamizato'
 });
-
-
 
 const order1Id = shippingService.createOrder(
   {
@@ -76,3 +80,14 @@ user1Orders.forEach(order => {
   });
   console.log("Order created at:", order.createdAt);
 });
+
+const productsFiltered = productService.findProducts({tags: ['Akai'], categoryId: category2Id});
+console.log(productsFiltered);
+
+console.clear();
+
+const usersFiltered = userService.findUsers({/*username: 'Humbaldo', */role: Role.ADMIN});
+console.log(usersFiltered);
+
+const categoriesFiltered = categoryService.findCategory({name: 'd'});
+console.log(categoriesFiltered);

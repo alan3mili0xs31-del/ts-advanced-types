@@ -6,3 +6,5 @@ export interface CreateUserDTO
   };
 
 export type UpdateUserDTO = Partial<CreateUserDTO>;
+
+export type FilterUserDTO = Readonly<UpdateUserDTO>;
